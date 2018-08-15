@@ -1,0 +1,51 @@
+@using EPiServer
+@using EPiServer.Core
+@using EPiServer.ServiceLocation
+@using AlloyAdvanced
+@model PageViewModel<AlloyAdvanced.Models.Pages.StartPage>
+
+@Html.PropertyFor(x => x.CurrentPage.MainContentArea, new { CssClass = "row equal-height", tag = AlloyAdvanced.Global.ContentAreaTags.FullWidth })
+
+<h3>Event List as content area</h3>
+@Html.PropertyFor(m => m.CurrentPage.EventListAsContentArea)
+
+<h3>Event list as list of content references</h3>
+@{
+    var loader = ServiceLocator.Current.GetInstance<IContentLoader>();
+
+    if (Model.CurrentPage.EventListAsListOfContentReferences != null)
+    {
+        IEnumerable<EventBlock> blocks = loader.GetItems(Model.CurrentPage.EventListAsListOfContentReferences, new LoaderOptions()).OfType<EventBlock>();
+
+        foreach (EventBlock block in blocks.OrderBy(b => b.When))
+        {
+            Html.RenderContentData(block, isContentInContentArea: false);
+        }
+    }
+}
+<h3>Event list as reference to an assets folder</h3>
+@{
+    if (Model.CurrentPage.EventListAsReferenceToAssetsFolder != null)
+    {
+        IEnumerable<EventBlock> blocksInFolder = loader.GetChildren<EventBlock>(Model.CurrentPage.EventListAsReferenceToAssetsFolder).OfType<EventBlock>();
+
+        foreach (EventBlock block in blocksInFolder.OrderBy(b => b.When))
+        {
+            Html.RenderContentData(block, isContentInContentArea: false);
+        }
+    }
+}
+
+<h3>List Links</h3>
+
+@{
+    if (Model.CurrentPage.PrefetchLinks != null)
+    {
+        IEnumerable<LinkOfPageBlock> linkInPages = loader.GetItems(Model.CurrentPage.PrefetchLinks, new LoaderOptions()).OfType<LinkOfPageBlock>();
+
+        foreach (LinkOfPageBlock block in linkInPages)
+        {
+            <a href="@(block.Link)">@(block.Name)</a>
+        }
+    }
+}

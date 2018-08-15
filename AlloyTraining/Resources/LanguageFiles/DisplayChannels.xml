@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<languages>
+  <language name="English" id="en">
+    <displaychannels>
+      <displaychannel name="mobile">
+        <name>Mobile</name>
+      </displaychannel>
+    </displaychannels>
+    <resolutions>
+      <iphone4>iPhone 4 (320 x 480)</iphone4>
+      <iphone5>iPhone 5 (320 x 568)</iphone5>
+    </resolutions>
+  </language>
+  <language name="Swedish" id="sv">
+    <displaychannels>
+      <displaychannel name="mobile">
+        <name>Mobil</name>
+      </displaychannel>
+    </displaychannels>
+    <resolutions>
+      <iphone4>iPhone 4 (320 x 480)</iphone4>
+      <iphone5>iPhone 5 (320 x 568)</iphone5>
+    </resolutions>
+  </language>
+</languages>

@@ -1,0 +1,17 @@
+﻿@model AlloyAdvanced.Models.Blocks.EventBlock
+<div>
+    <h4>@Model.Title</h4>
+    @if (!string.IsNullOrWhiteSpace(Model.Where))
+    {
+        <div>Location: @Model.Where</div>
+    }
+    @if (Model.When.HasValue)
+    {
+        <div>Date: @Model.When.Value.ToString("dddd, d MMMM yyyy")</div>
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.Description))
+    {
+        <div>@Model.Description</div>
+    }
+    <hr />
+</div>

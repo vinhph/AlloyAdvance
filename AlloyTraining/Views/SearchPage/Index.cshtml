@@ -1,0 +1,45 @@
+﻿@using EPiServer.Editor
+@model AlloyTraining.Models.ViewModels.SearchPageViewModel
+<div class="row">
+    <div class="span8">
+        @using (Html.BeginForm(actionName: null,
+            controllerName: null, routeValues: null,
+            method: PageEditing.PageIsInEditMode ? FormMethod.Post : FormMethod.Get))
+        {
+            <input tabindex="1" name="q" value="@Model.SearchText" />
+            <input type="submit" tabindex="2" class="btn" value="Search" />
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.SearchText))
+        {
+            <div class="row">
+                <div class="span8 grayHead">
+                    <h2>Search Results</h2>
+                </div>
+            </div>
+            if (Model.SearchResults.Count == 0)
+            {
+                <div class="row">
+                    <div class="span8 SearchResults">
+                        <span class="label label-warning">No matching results.</span>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="row">
+                    <div class="span8 SearchResults">
+                        <span class="label label-success">@Model.SearchResults.Count matching results.</span>
+                        @foreach (var item in Model.SearchResults)
+                        {
+                            <div class="listResult">
+                                <h3><a href="@item.Url">@item.Title</a></h3>
+                                <p>@item.Description</p>
+                                <hr />
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

@@ -1,0 +1,13 @@
+﻿@model AlloyAdvanced.Models.Blocks.PersonBlock
+<div>
+    <hr />
+    <h4>@Model.FirstName @Model.LastName</h4>
+    @if (Model.BirthDate.HasValue)
+    {
+        <div>Born on @Model.BirthDate.Value.ToString("dddd, d MMMM yyyy")</div>
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.Summary))
+    {
+        <div>@Model.Summary</div>
+    }
+</div>

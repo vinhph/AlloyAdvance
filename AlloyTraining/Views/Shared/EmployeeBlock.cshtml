@@ -1,0 +1,5 @@
+﻿@model AlloyTraining.Models.Blocks.EmployeeBlock
+<div class="block span">
+    @Model.FirstName @Model.LastName
+    @(Model.HireDate.HasValue ? "was hired on " + Model.HireDate.Value.ToString("dddd, d MMMM yyyy") : "")
+</div>

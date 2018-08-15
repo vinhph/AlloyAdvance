@@ -1,0 +1,16 @@
+﻿@using AlloyDemo.Models.Pages
+@model PageViewModel<DeleteContentPage>
+
+@if(ViewData["message"] != null)
+{
+    <div class="alert alert-success">
+        @ViewData["message"]
+    </div>
+}
+<div>
+    <form action="@Url.ContentUrl(Model.CurrentPage.ContentLink)delete" method="post">
+        <input name="contentReference" placeholder="Enter a content reference" />
+        <label for="hardDelete"><input name="hardDelete" id="hardDelete" type="checkbox" /> Hard delete</label>
+        <input type="submit" value="Delete" />
+    </form>
+</div>

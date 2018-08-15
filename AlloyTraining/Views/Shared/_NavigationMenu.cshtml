@@ -1,0 +1,57 @@
+﻿@using EPiServer.Core
+@using AlloyTraining.Business.ExtensionMethods
+@using AlloyTraining.Models.ViewModels
+@using AlloyTraining.Models.Pages
+@model IPageViewModel<SitePageData>
+<div class="alloyMenu">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li class="@(Model.CurrentPage.ContentLink.CompareToIgnoreWorkID(ContentReference.StartPage) ? "active" : null)">
+                            @Html.ContentLink(ContentReference.StartPage)
+                        </li>
+                        @Html.MenuList(ContentReference.StartPage,
+                    @<li class="@(item.Selected ? "active" : null)">
+                        @Html.PageLink(item.Page)
+                    </li>)
+                        <li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a href="/en/logout">Log out @User.Identity.Name</a>
+                            }
+                            else
+                            {
+                                <a href="@FormsAuthentication.LoginUrl?ReturnUrl=@Model.CurrentPage.PageLink.ExternalURLFromReference()">Log in</a>
+                            }
+                        </li>
+                    </ul>
+                </div>
+<div class="navbar-search pull-right">
+    @if (PageReference.IsNullOrEmpty(Html.GetStartPage().SearchPageLink))
+    {
+        if (EPiServer.Editor.PageEditing.PageIsInEditMode)
+        {
+            <div class="alert alert-danger">To enable search across the site, 
+                set the SearchPageLink property.</div>
+        }
+    }
+    else
+    {
+        <form action="@Html.GetStartPage().SearchPageLink.ExternalURLFromReference()" 
+              method="post">
+            <input type="text" class="search-query" name="q" id="SearchKeywords" placeholder="Search" />
+            <input type="submit" class="searchButton" id="SearchButton" value="" />
+        </form>
+    }
+</div>
+            </div>
+        </div>
+    </div>
+</div>
