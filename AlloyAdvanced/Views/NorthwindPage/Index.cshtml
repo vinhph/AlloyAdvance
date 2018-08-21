@@ -1,0 +1,8 @@
+﻿@model AlloyAdvanced.Models.ViewModels.NorthwindPageViewModel
+<h2>Northwind Categories</h2>
+<ul>
+    @foreach (KeyValuePair<string, string> category in Model.CategoryLinks)
+    {
+        <li><a href="@category.Value">@category.Key</a></li>
+    }
+</ul>
