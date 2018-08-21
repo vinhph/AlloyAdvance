@@ -5,6 +5,7 @@ using EPiServer.DataAnnotations;
 using AlloyAdvanced.Business.Rendering;
 using AlloyAdvanced.Models.Properties;
 using EPiServer.Web;
+using System.Collections.Generic;
 
 namespace AlloyAdvanced.Models.Pages
 {
@@ -93,12 +94,13 @@ namespace AlloyAdvanced.Models.Pages
             Description = "Folder used as root for comments. If not set, comment function will be disabled",
             GroupName = SystemTabNames.Settings,
             Order = 500)]
-        [UIHint(UIHint.BlockFolder)]
+        [UIHint(UIHint.AssetsFolder)]
         public virtual ContentReference CommentFolder { get; set; }
 
         public string ContentAreaCssClass
         {
             get { return "teaserblock"; } //Page partials should be style like teasers
         }
+        
     }
 }

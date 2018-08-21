@@ -39,7 +39,7 @@
 <h3>List Links</h3>
 
 @{
-    if (Model.CurrentPage.PrefetchLinks != null)
+    @*if (Model.CurrentPage.PrefetchLinks != null)
     {
         IEnumerable<LinkOfPageBlock> linkInPages = loader.GetItems(Model.CurrentPage.PrefetchLinks, new LoaderOptions()).OfType<LinkOfPageBlock>();
 
@@ -47,5 +47,5 @@
         {
             <a href="@(block.Link)">@(block.Name)</a>
         }
-    }
+    }*@
 }
