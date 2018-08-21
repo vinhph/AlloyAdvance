@@ -5,8 +5,6 @@ using EPiServer.DataAnnotations;
 using AlloyAdvanced.Business.Rendering;
 using AlloyAdvanced.Models.Properties;
 using EPiServer.Web;
-using AlloyAdvanced.Models.Blocks;
-using System.Collections.Generic;
 
 namespace AlloyAdvanced.Models.Pages
 {
@@ -27,8 +25,8 @@ namespace AlloyAdvanced.Models.Pages
 
                 // Use explicitly set meta title, otherwise fall back to page name
                 return !string.IsNullOrWhiteSpace(metaTitle)
-                        ? metaTitle
-                        : PageName;
+                       ? metaTitle
+                       : PageName;
             }
             set { this.SetPropertyValue(p => p.MetaTitle, value); }
         }
@@ -44,7 +42,7 @@ namespace AlloyAdvanced.Models.Pages
             GroupName = Global.GroupNames.MetaData,
             Order = 300)]
         [CultureSpecific]
-        [UIHint(UIHint.Textarea)]
+        [UIHint(UIHint.LongString)]
         public virtual string MetaDescription { get; set; }
 
         [Display(
@@ -72,8 +70,8 @@ namespace AlloyAdvanced.Models.Pages
 
                 // Use explicitly set teaser text, otherwise fall back to description
                 return !string.IsNullOrWhiteSpace(teaserText)
-                        ? teaserText
-                        : MetaDescription;
+                       ? teaserText
+                       : MetaDescription;
             }
             set { this.SetPropertyValue(p => p.TeaserText, value); }
         }
@@ -90,16 +88,17 @@ namespace AlloyAdvanced.Models.Pages
         [CultureSpecific]
         public virtual bool HideSiteFooter { get; set; }
 
+        [Display(
+            Name = "Comment folder",
+            Description = "Folder used as root for comments. If not set, comment function will be disabled",
+            GroupName = SystemTabNames.Settings,
+            Order = 500)]
+        [UIHint(UIHint.BlockFolder)]
+        public virtual ContentReference CommentFolder { get; set; }
+
         public string ContentAreaCssClass
         {
             get { return "teaserblock"; } //Page partials should be style like teasers
         }
-
-        [Display(
-            GroupName = SystemTabNames.Content,
-            Name = "Cac link cua page nay",
-            Order = 30)]
-        [AllowedTypes(typeof(LinkOfPageBlock))]
-        public virtual IList<ContentReference> PrefetchLinks { get; set; }
     }
 }
