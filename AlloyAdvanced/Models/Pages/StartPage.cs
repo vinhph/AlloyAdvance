@@ -24,6 +24,9 @@ namespace AlloyAdvanced.Models.Pages
         ExcludeOn = new[] { typeof(ContainerPage), typeof(ProductPage), typeof(StandardPage), typeof(ISearchPage), typeof(LandingPage) })] // ...and underneath those we can't create additional start pages
     public class StartPage : SitePageData
     {
+        [AllowedTypes(typeof(ShippersPage))]
+        public virtual ContentReference Shippers { get; set; }
+
         [Display(
             GroupName = SystemTabNames.Content,
             Order = 320)]
