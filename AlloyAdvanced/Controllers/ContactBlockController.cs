@@ -25,6 +25,7 @@ namespace AlloyAdvanced.Controllers
         public override ActionResult Index(ContactBlock currentBlock)
         {
             ContactPage contactPage = null;
+
             if(!ContentReference.IsNullOrEmpty(currentBlock.ContactPageLink))
             {
                 contactPage = _contentLoader.Get<ContactPage>(currentBlock.ContactPageLink);
