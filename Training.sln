@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlloyAdvanced", "AlloyAdvan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthwindWebApi", "NorthwindWebApi\NorthwindWebApi.csproj", "{6B78FB46-DE78-4B1E-BDCE-DC0BC365FCCC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindConsole", "FindConsole\FindConsole.csproj", "{08301AC5-BEEE-4062-BB9B-1643843B5901}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{6B78FB46-DE78-4B1E-BDCE-DC0BC365FCCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B78FB46-DE78-4B1E-BDCE-DC0BC365FCCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B78FB46-DE78-4B1E-BDCE-DC0BC365FCCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08301AC5-BEEE-4062-BB9B-1643843B5901}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08301AC5-BEEE-4062-BB9B-1643843B5901}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08301AC5-BEEE-4062-BB9B-1643843B5901}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08301AC5-BEEE-4062-BB9B-1643843B5901}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
