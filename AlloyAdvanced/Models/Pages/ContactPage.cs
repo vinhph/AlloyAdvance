@@ -26,6 +26,7 @@ namespace AlloyAdvanced.Models.Pages
 
         [Display(GroupName = Global.GroupNames.Contact)]
         [EmailAddress]
+        [UIHint(Global.SiteUIHints.Email)]
         public virtual string Email { get; set; }
 
         [Display(
@@ -40,6 +41,7 @@ namespace AlloyAdvanced.Models.Pages
             GroupName = Global.GroupNames.Contact,
             Order = 20)]
         [SelectOne(SelectionFactoryType = typeof(YouTubeSelectionFactory))]
+        [UIHint(Global.SiteUIHints.YouTube)]
         public virtual string YouTubeVideo { get; set; }
 
         [Display(
@@ -55,6 +57,7 @@ namespace AlloyAdvanced.Models.Pages
             GroupName = Global.GroupNames.Contact,
             Order = 40)]
         [SelectMany(SelectionFactoryType = typeof(CitySelectionFactory))]
+        [UIHint(Global.SiteUIHints.Cities)]
         public virtual string OtherCities { get; set; }
     }
 }

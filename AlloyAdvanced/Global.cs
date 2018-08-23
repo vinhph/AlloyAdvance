@@ -81,6 +81,10 @@ namespace AlloyAdvanced
             public const string Embiggen = "Embiggen";
             public const string Strings = "StringList";
             public const string StringsCollection = "StringsCollection";
+            public const string Cities = "Cities";
+            public const string Email = "Email";
+            public const string YouTube = "YouTube";
+
         }
 
         /// <summary>
