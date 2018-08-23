@@ -1,3 +1,8 @@
+using AlloyAdvanced.Business.EditorDescriptors;
+using EPiServer.Core;
+using EPiServer.Shell.ObjectEditing;
+using System.ComponentModel.DataAnnotations;
+
 namespace AlloyAdvanced.Models.Pages
 {
     /// <summary>
@@ -7,8 +12,10 @@ namespace AlloyAdvanced.Models.Pages
         GroupName = Global.GroupNames.News,
         GUID = "AEECADF2-3E89-4117-ADEB-F8D43565D2F4")]
     [SiteImageUrl(Global.StaticGraphicsFolderPath + "page-type-thumbnail-article.png")]
-    public class ArticlePage : StandardPage
+    public class ArticlePage : StandardPage, IContentWithComments
     {
-
+        //[SelectOne(SelectionFactoryType = typeof(ContactPageSelectionFactory))]
+        [UIHint(Global.SiteUIHints.Contact)]
+        public virtual PageReference Author { get; set; }
     }
 }

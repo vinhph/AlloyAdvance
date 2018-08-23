@@ -76,8 +76,9 @@ namespace AlloyAdvanced
         public static class SiteUIHints
         {
             public const string City = "City";
-            public const string Embiggen = "Embiggen";
             public const string Contact = "contact";
+            public const string DateOnly = "dateonly";
+            public const string Embiggen = "Embiggen";
             public const string Strings = "StringList";
             public const string StringsCollection = "StringsCollection";
         }
@@ -86,5 +87,13 @@ namespace AlloyAdvanced
         /// Virtual path to folder with static graphics, such as "~/Static/gfx/"
         /// </summary>
         public const string StaticGraphicsFolderPath = "~/Static/gfx/";
+
+        public static class SystemPropertyNames
+        {
+            [Display(Name = "Category", Order = 1)]
+            public const string Category = "icategorizable_category";
+            [Display(Name = "SortIndex", Order = 2)]
+            public const string SortIndex = "PagePeerOrder";
+        }
     }
 }
