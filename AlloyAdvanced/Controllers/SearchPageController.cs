@@ -12,6 +12,7 @@ using EPiServer.Web;
 using EPiServer.Web.Hosting;
 using EPiServer.Web.Mvc.Html;
 using EPiServer.Web.Routing;
+using EPiServer.Framework.DataAnnotations;
 
 namespace AlloyAdvanced.Controllers
 {
