@@ -13,6 +13,9 @@ using EPiServer.Web.Hosting;
 using EPiServer.Web.Mvc.Html;
 using EPiServer.Web.Routing;
 using EPiServer.Framework.DataAnnotations;
+using EPiServer.Search.Queries.Lucene;
+using EPiServer.Security;
+using EPiServer.ServiceLocation;
 
 namespace AlloyAdvanced.Controllers
 {
@@ -51,7 +54,7 @@ namespace AlloyAdvanced.Controllers
                 var hits = Search(q.Trim(),
                     new[] { SiteDefinition.Current.StartPage, SiteDefinition.Current.GlobalAssetsRoot, SiteDefinition.Current.SiteAssetsRoot },
                     ControllerContext.HttpContext,
-                    currentPage.Language?.Name).ToList();
+                    currentPage.LanguageID).ToList();
                 model.Hits = hits;
                 model.NumberOfHits = hits.Count();
             }
@@ -78,10 +81,31 @@ namespace AlloyAdvanced.Controllers
         /// </remarks>
         private IEnumerable<SearchContentModel.SearchHit> Search(string searchText, IEnumerable<ContentReference> searchRoots, HttpContextBase context, string languageBranch)
         {
-            var searchResults = _searchService.Search(searchText, searchRoots, context, languageBranch, MaxResults);
+            var query = new GroupQuery(LuceneOperator.AND);
 
-            return searchResults.IndexResponseItems.SelectMany(CreateHitModel);
+            query.QueryExpressions.Add(new ContentQuery<PageData>());
+
+            var keywordsQuery = new GroupQuery(LuceneOperator.OR);
+
+            keywordsQuery.QueryExpressions.Add(new FieldQuery(searchText));
+
+            keywordsQuery.QueryExpressions.Add(
+                new CustomFieldQuery(searchText, "TEASERBLOCK_FIELD"));
+
+            query.QueryExpressions.Add(keywordsQuery);
+
+            var accessQuery = new AccessControlListQuery();
+            accessQuery.AddAclForUser(PrincipalInfo.Current, HttpContext);
+
+            query.QueryExpressions.Add(accessQuery);
+
+            var searchHandler = ServiceLocator.Current.GetInstance<SearchHandler>();
+
+            var results = searchHandler.GetSearchResults(query, 1, 40);
+
+            return results.IndexResponseItems.SelectMany(CreateHitModel);
         }
+
 
         private IEnumerable<SearchContentModel.SearchHit> CreateHitModel(IndexResponseItem responseItem)
         {
