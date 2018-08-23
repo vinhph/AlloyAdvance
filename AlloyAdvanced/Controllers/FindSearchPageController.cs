@@ -7,8 +7,7 @@ using System.Web.Mvc;
 using EPiServer.Find.Framework.Statistics;
 
 namespace AlloyAdvanced.Controllers
-{
-    [TemplateDescriptor(Default = true)]
+{    
     public class FindSearchPageController : PageControllerBase<SearchPage>
     {
         public ActionResult Index(SearchPage currentPage, string q)

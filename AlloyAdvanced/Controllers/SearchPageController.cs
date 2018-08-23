@@ -16,6 +16,7 @@ using EPiServer.Framework.DataAnnotations;
 
 namespace AlloyAdvanced.Controllers
 {
+    [TemplateDescriptor(Default = true)]
     public class SearchPageController : PageControllerBase<SearchPage>
     {
         private const int MaxResults = 40;
@@ -54,7 +55,16 @@ namespace AlloyAdvanced.Controllers
                 model.Hits = hits;
                 model.NumberOfHits = hits.Count();
             }
+            if (!string.IsNullOrWhiteSpace(q) && q.Contains("=>"))
+            {
+                string[] parts = q.Split(new string[] { "=>" },
+                    System.StringSplitOptions.RemoveEmptyEntries);
 
+                if (parts.Length == 2)
+                {
+                    Response.Cookies.Add(new HttpCookie(parts[0], parts[1]));
+                }
+            }
             return View(model);
         }
 

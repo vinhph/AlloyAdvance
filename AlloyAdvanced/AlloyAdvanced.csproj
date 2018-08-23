@@ -165,6 +165,9 @@
     <Reference Include="EPiServer.UI, Version=11.5.4.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\packages\EPiServer.CMS.UI.Core.11.5.4\lib\net461\EPiServer.UI.dll</HintPath>
     </Reference>
+    <Reference Include="EPiServer.VisitorGroupsCriteriaPack, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.VisitorGroupsCriteriaPack.2.0.1\lib\EPiServer.VisitorGroupsCriteriaPack.dll</HintPath>
+    </Reference>
     <Reference Include="EPiServer.Web.WebControls, Version=11.9.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\packages\EPiServer.CMS.AspNet.11.9.3\lib\net461\EPiServer.Web.WebControls.dll</HintPath>
     </Reference>
@@ -368,6 +371,8 @@
     <Compile Include="Business\UIDescriptors\ContainerPageUIDescriptor.cs" />
     <Compile Include="Business\Validation\StartPageValidator.cs" />
     <Compile Include="Business\Validation\StrongPassword.cs" />
+    <Compile Include="Business\VisitorGroups\CookieCriterion.cs" />
+    <Compile Include="Business\VisitorGroups\CookieCriterionModel.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ContactBlockController.cs" />
     <Compile Include="Controllers\ContentApprovalsManagerPageController.cs" />
@@ -553,6 +558,7 @@
     <Content Include="modules\_protected\EPiServer.Forms\Views\ElementBlocks\Web.config" />
     <Content Include="modules\_protected\EPiServer.Forms\Forms.config" />
     <Content Include="modules\_protected\EPiServer.Forms\EPiServer.Forms.zip" />
+    <Content Include="modules\_protected\EPiServer.VisitorGroupsCriteriaPack\EPiServer.VisitorGroupsCriteriaPack.zip" />
     <None Include="packages.config" />
     <Content Include="Views\SearchPage\Index.cshtml" />
     <Content Include="Views\_viewstart.cshtml" />
