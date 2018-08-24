@@ -147,6 +147,12 @@
     <Reference Include="EPiServer.Logging.Log4Net, Version=2.2.2.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\packages\EPiServer.Logging.Log4Net.2.2.2\lib\net461\EPiServer.Logging.Log4Net.dll</HintPath>
     </Reference>
+    <Reference Include="EPiServer.Packaging, Version=3.4.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Packaging.3.4.0\lib\net461\EPiServer.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="EPiServer.Packaging.CmdAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Packaging.3.4.0\lib\net461\EPiServer.Packaging.CmdAPI.dll</HintPath>
+    </Reference>
     <Reference Include="EPiServer.Search.Cms, Version=9.0.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\packages\EPiServer.Search.Cms.9.0.1\lib\net461\EPiServer.Search.Cms.dll</HintPath>
     </Reference>
@@ -161,6 +167,18 @@
     </Reference>
     <Reference Include="EPiServer.Shell.UI, Version=11.5.4.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\packages\EPiServer.CMS.UI.Core.11.5.4\lib\net461\EPiServer.Shell.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="EPiServer.Social, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Social.2.3.0\lib\net461\EPiServer.Social.dll</HintPath>
+    </Reference>
+    <Reference Include="EPiServer.Social.Configuration, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Social.2.3.0\lib\net461\EPiServer.Social.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="EPiServer.Social.Models, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Social.2.3.0\lib\net461\EPiServer.Social.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="EPiServer.Social.Providers, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPiServer.Social.2.3.0\lib\net461\EPiServer.Social.Providers.dll</HintPath>
     </Reference>
     <Reference Include="EPiServer.UI, Version=11.5.4.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\packages\EPiServer.CMS.UI.Core.11.5.4\lib\net461\EPiServer.UI.dll</HintPath>
@@ -214,8 +232,14 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NuGet.Core, Version=2.5.40416.9020, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Core.2.5.0\lib\net40-Client\NuGet.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="PowerSlice, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PowerSlice.4.0.0\lib\net461\PowerSlice.dll</HintPath>
     </Reference>
     <Reference Include="StructureMap, Version=4.7.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\StructureMap.4.7.0\lib\net45\StructureMap.dll</HintPath>
@@ -356,6 +380,9 @@
     <Compile Include="Business\PageTypeExtensions.cs" />
     <Compile Include="Business\PageViewContextFactory.cs" />
     <Compile Include="Business\PartialRouters\NorthwindToCategoryPartialRouter.cs" />
+    <Compile Include="Business\PowerSlices\EverythingSlice.cs" />
+    <Compile Include="Business\PowerSlices\MySitePagesSlice.cs" />
+    <Compile Include="Business\PowerSlices\ProductPageSlice.cs" />
     <Compile Include="Business\Rendering\AlloyContentAreaRenderer.cs" />
     <Compile Include="Business\Rendering\ErrorHandlingContentRenderer.cs" />
     <Compile Include="Business\Rendering\IContainerPage.cs" />
@@ -562,6 +589,10 @@
     <Content Include="modules\_protected\EPiServer.Forms\Forms.config" />
     <Content Include="modules\_protected\EPiServer.Forms\EPiServer.Forms.zip" />
     <Content Include="modules\_protected\EPiServer.VisitorGroupsCriteriaPack\EPiServer.VisitorGroupsCriteriaPack.zip" />
+    <Content Include="modules\_protected\EPiServer.Social\Views\Web.config" />
+    <Content Include="modules\_protected\EPiServer.Social\module.config" />
+    <Content Include="modules\_protected\EPiServer.Social\EPiServerSocial.config" />
+    <Content Include="modules\_protected\EPiServer.Social\EPiServer.Social.zip" />
     <None Include="packages.config" />
     <Content Include="Views\SearchPage\Index.cshtml" />
     <Content Include="Views\_viewstart.cshtml" />
